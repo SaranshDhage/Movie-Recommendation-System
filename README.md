@@ -1,6 +1,20 @@
-# Movie Recommendation System (MRS)
+# Movie Recommendation System
 
-## 1. Requirements :heavy_check_mark:
+## Overview
+This Django web application provides movie recommendations based on user preferences. It utilizes a custom algorithm to suggest movies that match the user's taste, enhancing their viewing experience.
+
+## Features
+- **User-Friendly Interface**: Simple and intuitive design for easy navigation.
+- **Search Functionality**: Users can search for movies using keywords.
+- **Recommendations**: The system suggests movies based on user preferences and viewing history.
+- **Responsive Design**: Compatible with various devices and screen sizes.
+
+## Technology Stack
+- **Backend**: Django
+- **Frontend**: HTML, CSS (Tailwind CSS), JavaScript (jQuery)
+- **Database**: PostgreSQL (recommended for production)
+
+## 1. Requirements:
 
 To build this project without any errors/issues, the following requirements needs to be satisfied
 
