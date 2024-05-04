@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Recommendation System</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.0/dist/tailwind.min.css" />
+  <link rel="stylesheet" href="{% static 'recommender/style.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+</head>
+<body class="bg-black text-white">
+  <header class="text-center py-4">
+    <h1 class="main-title"><strong>Movie Recommendation System</strong></h1>
+  </header>
+
+  <div class="main-container mx-auto text-center">
+    <p class="subheading text-white text-opacity-80">
+      Check out these great movies that we recommend for you.
+    </p>
+    <form method="POST" class="search-form my-5 flex justify-center items-center">
+      {% csrf_token %}
+      <input class="input-field bg-transparent border border-white rounded-lg py-2 px-4 text-white text-opacity-80 placeholder-white placeholder-opacity-50" type="text" id="movie_name" name="movie_name" placeholder="Start typing to see movie suggestions..." required />
+      <button type="submit" class="submit-button ml-2">Search</button>
+    </form>
+    <div class="social-links absolute bottom-0 left-0 right-0 pb-4">
+      <a href="https://github.com/SaranshDhage" target="_blank"><i class="fa fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/saransh-dhage-116502217/" target="_blank"><i class="fa fa-linkedin"></i></a>
+    </div>
+    
+  </div>
+
+  <script>
+    $(function() {
+      var availableTags = [
+          {% for mmm in all_movie_names %}
+          "{{ mmm }}",
+          {% endfor %}
+      ];
+      $("#movie_name").autocomplete({
+          source: availableTags,
+          minLength: 3
+      }).autocomplete("widget").addClass("autocomplete-style");
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var spanElement = document.querySelector(
+        ".ui-helper-hidden-accessible"
+      );
+      if (spanElement) {
+        spanElement.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
